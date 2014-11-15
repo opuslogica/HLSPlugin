@@ -1,4 +1,4 @@
- /*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -110,9 +110,14 @@ HLSPlugin.prototype.pause = function() {
  *
  * @return      duration or -1 if not known.
  */
-HLSPlugin.prototype.getDuration = function() {
-    return this._duration;
+HLSPlugin.prototype.getDuration = function(success, fail) {
+    var me = this;
+    exec(function(d) {
+        me._duration = d;
+        success(d);
+    }, fail, "HLSPlugin", "getDurationAudio", [this.id]);
 };
+
 
 /**
  * Get position of audio.
