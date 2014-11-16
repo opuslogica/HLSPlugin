@@ -4,8 +4,6 @@
    and others, of Opus Logica, Inc. */
 
 #import "HLSPlugin.h"
-#import <Foundation/Foundation.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 static MPMoviePlayerController *moviePlayer = nil;
 
@@ -18,6 +16,8 @@ static MPMoviePlayerController *moviePlayer = nil;
 
   self.mediaId      = [command.arguments objectAtIndex:0];
   self.resourcePath = [command.arguments objectAtIndex:1];
+  NSError *error = nil;
+  BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
 
   NSLog(@"HLSPlugin created path-> %@    id-> %@", self.resourcePath, self.mediaId);
 
