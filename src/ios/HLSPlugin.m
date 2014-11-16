@@ -1,15 +1,9 @@
-//
-//  HLSPlayerPlugin.m
-//  SenalRadionica
-//
-//  Created by Jaime Caicedo on 2/3/14.
-//
-//
+/* HLSPlayerPlugin.m -*- ObjC -*- code to play HLS (m3u8 playlist) files. */
+/* Starter version created by Jaime Caicedo on Feb 3rd, 2014 */
+/* Subsequent code and modifications by Edward B. Gamble, Jr., Brian J. Fox,
+   and others, of Opus Logica, Inc. */
 
 #import "HLSPlugin.h"
-//#import "STKAudioPlayer.h"
-//#import "STKAutoRecoveringHttpDataSource.h"
-//#import "SampleQueueId.h"
 #import <Foundation/Foundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
@@ -31,24 +25,23 @@ static MPMoviePlayerController *moviePlayer = nil;
   [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
 
-- (void)getCurrentPositionAudio:(CDVInvokedUrlCommand*)command{
-	NSLog(@"%@", @"HLSPlugin getCurrentPosition");
+- (void)getCurrentPositionAudio:(CDVInvokedUrlCommand*)command {
+  NSLog(@"%@", @"HLSPlugin getCurrentPosition");
 
   [self.commandDelegate
-   sendPluginResult: [CDVPluginResult resultWithStatus: CDVCommandStatus_OK
-                                       messageAsDouble: moviePlayer.currentPlaybackTime]
-        callbackId: command.callbackId];
+      sendPluginResult: [CDVPluginResult resultWithStatus: CDVCommandStatus_OK
+					  messageAsDouble: moviePlayer.currentPlaybackTime]
+      callbackId: command.callbackId];
 }
 
 - (void) getDurationAudio: (CDVInvokedUrlCommand*) command {
   NSLog(@"%@", @"HLSPlugin getDuration");
 
   [self.commandDelegate
-   sendPluginResult: [CDVPluginResult resultWithStatus: CDVCommandStatus_OK
-                                       messageAsDouble: moviePlayer.duration]
-   callbackId: command.callbackId];
+      sendPluginResult: [CDVPluginResult resultWithStatus: CDVCommandStatus_OK
+					  messageAsDouble: moviePlayer.duration]
+      callbackId: command.callbackId];
 }
-
 
 - (void) startPlayingAudio: (CDVInvokedUrlCommand*) command {
   NSLog(@"%@", @"HLSPlugin startPlayingAudio");
@@ -72,13 +65,9 @@ static MPMoviePlayerController *moviePlayer = nil;
 
   [self.commandDelegate sendPluginResult: [CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
                               callbackId: command.callbackId];
-
 }
 
-//
-//
-//
-- (void)pausePlayingAudio: (CDVInvokedUrlCommand*)command{
+- (void)pausePlayingAudio: (CDVInvokedUrlCommand*)command {
   NSLog(@"%@", @"HLSPlugin pausePlayingAudio");
 
   if (moviePlayer.playbackState != MPMoviePlaybackStatePaused) {
@@ -90,14 +79,10 @@ static MPMoviePlayerController *moviePlayer = nil;
                               callbackId: command.callbackId];
 }
 
-//
-//
-//
 - (void) stopPlayingAudio: (CDVInvokedUrlCommand*) command {
   NSLog(@"%@", @"HLSPlugin stopPlayinAudio");
 
-  if (moviePlayer.playbackState != MPMoviePlaybackStatePaused)
-  {
+  if (moviePlayer.playbackState != MPMoviePlaybackStatePaused) {
     NSLog(@"Stop");
     [moviePlayer stop];
     moviePlayer.currentPlaybackTime = 0;
@@ -107,21 +92,14 @@ static MPMoviePlayerController *moviePlayer = nil;
                               callbackId: command.callbackId];
 }
 
-//
-//
-//
-- (void) releasePlayingAudio:(CDVInvokedUrlCommand*)command{
-  NSLog(@"%@", @"HLSPlugin stopPlayinAudio");
+- (void) releaseAudioPlayer:(CDVInvokedUrlCommand*)command {
+  NSLog(@"%@", @"HLSPlugin releaseAudioPlayer");
 
   NSLog(@"Release");
   [moviePlayer stop];
   moviePlayer = nil;
-
 }
 
-//
-//
-//
 - (void) setVolume: (CDVInvokedUrlCommand*) command {
 
   NSString* mmediaId = [command.arguments objectAtIndex:0];
@@ -129,20 +107,13 @@ static MPMoviePlayerController *moviePlayer = nil;
 
   NSLog(@"HLSPlayer setting Volume %@  mediaId %@", volume, mmediaId);
 
-  //audioPlayer.volume = [volume intValue];
-
-  //[moviePlayer ]
-
   [[MPMusicPlayerController applicationMusicPlayer] setVolume:volume.floatValue];
 
   [self.commandDelegate sendPluginResult: [CDVPluginResult resultWithStatus:CDVCommandStatus_OK]
                               callbackId: command.callbackId];
 }
 
-//
-//
-//
-- (void)seekToAudio: (CDVInvokedUrlCommand*)command{
+- (void)seekToAudio: (CDVInvokedUrlCommand*)command {
   NSLog(@"%@", @"HLSPlugin seekToAudio");
 
   NSString* mmediaId = [command.arguments objectAtIndex:0];

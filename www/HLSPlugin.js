@@ -37,17 +37,17 @@ var mediaObjects = {};
  *                                  statusCallback(int statusCode) - OPTIONAL
  */
 var HLSPlugin = function(src, successCallback, errorCallback, statusCallback) {
-	console.log('HLSPlugin creation');
-    argscheck.checkArgs('SFFF', 'HLSPlugin', arguments);
-    this.id = utils.createUUID();
-    mediaObjects[this.id] = this;
-    this.src = src;
-    this.successCallback = successCallback;
-    this.errorCallback = errorCallback;
-    this.statusCallback = statusCallback;
-    this._duration = -1;
-    this._position = -1;
-    exec(null, this.errorCallback, "HLSPlugin", "create", [this.id, this.src]);
+  console.log('HLSPlugin creation');
+  argscheck.checkArgs('SFFF', 'HLSPlugin', arguments);
+  this.id = utils.createUUID();
+  mediaObjects[this.id] = this;
+  this.src = src;
+  this.successCallback = successCallback;
+  this.errorCallback = errorCallback;
+  this.statusCallback = statusCallback;
+  this._duration = -1;
+  this._position = -1;
+  exec(null, this.errorCallback, "HLSPlugin", "create", [this.id, this.src]);
 };
 
 // Media messages
@@ -73,8 +73,8 @@ HLSPlugin.get = function(id) {
  * Start or resume playing audio file.
  */
 HLSPlugin.prototype.play = function(options) {
-    console.log('play en el HLSPlugin');
-    exec(null, null, "HLSPlugin", "startPlayingAudio", [this.id, this.src, options]);
+  console.log("HLSPlugin: JS: play: ", options);
+  exec(null, null, "HLSPlugin", "startPlayingAudio", [this.id, this.src, options]);
 };
 
 /**
@@ -85,6 +85,15 @@ HLSPlugin.prototype.stop = function() {
     exec(function() {
         me._position = 0;
     }, this.errorCallback, "HLSPlugin", "stopPlayingAudio", [this.id]);
+};
+
+/**
+ * Release the audio player.
+ */
+HLSPlugin.prototype.release = function() {
+    var me = this;
+    exec(function() {
+    }, this.errorCallback, "HLSPlugin", "releaseAudioPlayer", [this.id]);
 };
 
 /**
@@ -129,7 +138,6 @@ HLSPlugin.prototype.getCurrentPosition = function(success, fail) {
         success(p);
     }, fail, "HLSPlugin", "getCurrentPositionAudio", [this.id]);
 };
-
 
 /**
  * Adjust the volume.

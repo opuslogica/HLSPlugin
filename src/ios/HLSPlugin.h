@@ -1,10 +1,7 @@
-//
-//  HLSPlayerPlugin.h
-//  SenalRadionica
-//
-//  Created by Jaime Caicedo on 2/3/14.
-//
-//
+/* HLSPlayerPlugin.m -*- ObjC -*- code to play HLS (m3u8 playlist) files. */
+/* Starter version created by Jaime Caicedo on Feb 3rd, 2014 */
+/* Subsequent code and modifications by Edward B. Gamble, Jr., Brian J. Fox,
+   and others, of Opus Logica, Inc. */
 
 #import <UIKit/UIKit.h>
 #import <Cordova/CDVPlugin.h>
@@ -22,7 +19,7 @@
 - (void)startPlayingAudio:(CDVInvokedUrlCommand*)command;
 - (void)pausePlayingAudio: (CDVInvokedUrlCommand*)command;
 - (void)stopPlayingAudio:(CDVInvokedUrlCommand*)command;
-- (void)releasePlayingAudio:(CDVInvokedUrlCommand*)command;
+- (void)releaseAudiPlayer:(CDVInvokedUrlCommand*)command;
 - (void)setVolume:(CDVInvokedUrlCommand*)command;
 - (void)seekToAudio: (CDVInvokedUrlCommand*)command;
 
