@@ -17,7 +17,11 @@ static MPMoviePlayerController *moviePlayer = nil;
   self.mediaId      = [command.arguments objectAtIndex:0];
   self.resourcePath = [command.arguments objectAtIndex:1];
   NSError *error = nil;
-  BOOL success = [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+  AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+  BOOL success;
+
+  success = [audioSession setCategory:AVAudioSessionCategoryPlayback error:&error];
+  success = [audioSession setActive:YES error:&error];
 
   NSLog(@"HLSPlugin created path-> %@    id-> %@", self.resourcePath, self.mediaId);
 
