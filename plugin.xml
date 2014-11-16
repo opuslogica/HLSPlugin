@@ -49,6 +49,11 @@
         <param name="ios-package" value="HLSPlugin"/>
       </feature>
     </config-file>
+    <config-file target="*-Info.plist" parent="UIBackgroundModes">
+      <array>
+        <string>audio</string>
+      </array>
+    </config-file>
 
     <header-file src="src/ios/HLSPlugin.h"/>
     <source-file src="src/ios/HLSPlugin.m"/>
