@@ -1,4 +1,4 @@
-package com.bakata.plugins;
+package org.opuslogica.plugins;
 
 import java.io.IOException;
 
