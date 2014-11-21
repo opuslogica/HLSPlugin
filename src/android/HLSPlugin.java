@@ -1,4 +1,4 @@
-package org.opuslogica..plugins;
+package org.opuslogica.plugins;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
