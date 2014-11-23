@@ -24,7 +24,7 @@ public class HLSPlugin extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-	Log.d(TAG, "HLSPlugin: execute(" + action + ", "+ args.toString(), ")");
+	Log.d(TAG, "HLSPlugin: execute(" + action + ", "+ args.toString() + ")");
 	PluginResult.Status status = PluginResult.Status.OK;
 
 	if ("create".equalsIgnoreCase(action)) {
