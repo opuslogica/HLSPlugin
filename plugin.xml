@@ -31,6 +31,10 @@
       <uses-permission android:name="android.permission.BLUETOOTH" />      
       <uses-permission android:name="android.permission.BROADCAST_STICKY" />
       <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+      <activity android:name="io.vov.vitamio.activity.InitActivity" android:windowSoftInputMode="stateAlwaysHidden"
+		android:theme="@android:style/Theme.NoTitleBar"
+		android:launchMode="singleTop"
+		android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
     </config-file>
         
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
