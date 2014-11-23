@@ -120,5 +120,6 @@ public class HLSPlugin extends CordovaPlugin {
 	    public void onServiceDisconnected(ComponentName className) {
 		service = null;
 	    	Log.i(TAG, "HLSPlugin: onServiceDisconnected: Disconnected from service");
-	};
+	    };
+	}
 }
