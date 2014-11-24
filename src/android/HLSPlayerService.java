@@ -38,9 +38,9 @@ public class HLSPlayerService extends Service {
 	Log.i(TAG, "HLSPlayer: onCreate: before super.onCreate();");
 	super.onCreate();
 	Log.i(TAG, "HLSPlayer: onCreate: after super.onCreate();");
-
-	if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this))
-            return;
+	/*	if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this))
+		  return;
+	*/
 
 	Log.i(TAG, "HLSPlayer: onCreate: after checking libs");
     }
