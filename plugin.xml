@@ -46,7 +46,7 @@
 
     <source-file src="src/android/HLSPlugin.java" target-dir="src/org/opuslogica/plugins" />
     <source-file src="src/android/HLSPlayerService.java" target-dir="src/org/opuslogica/plugins" />
-    <hook type="after_build" src="scripts/copy-libs.sh" />
+    <hook type="after_prepare" src="scripts/copy-libs.sh" />
 
   </platform>
 
