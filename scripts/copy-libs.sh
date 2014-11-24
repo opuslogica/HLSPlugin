@@ -7,4 +7,5 @@ if [[ $CORDOVA_CMDLINE == *android* ]]; then
    echo "Copying Vitamio libraries into the project from the plugin.xml hook."
    cp ${mydir}/Vitamio/Vitamio.jar platforms/android/libs
    cp -r ${mydir}/Vitamio/libs/* platforms/android/libs
+   cp -a platforms/android/libs/raw platforms/android/res/
 fi
