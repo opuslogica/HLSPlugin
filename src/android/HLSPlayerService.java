@@ -35,7 +35,14 @@ public class HLSPlayerService extends Service {
 
     @Override
     public void onCreate() {
-	Log.i(TAG, "CREATE");
+	Log.i(TAG, "HLSPlayer: onCreate: before super.onCreate();");
+	super.onCreate();
+	Log.i(TAG, "HLSPlayer: onCreate: after super.onCreate();");
+
+	if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this))
+            return;
+
+	Log.i(TAG, "HLSPlayer: onCreate: after checking libs");
     }
 
     public String getPath() {
