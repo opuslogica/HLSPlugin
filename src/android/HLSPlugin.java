@@ -16,6 +16,7 @@ import android.util.Log;
 public class HLSPlugin extends CordovaPlugin {
 
     private static final String TAG = HLSPlugin.class.getSimpleName();
+    private static int vitamio_init_decoders=0x7f06000b;
 
     private HLSPlayerService service;
 
@@ -30,6 +31,11 @@ public class HLSPlugin extends CordovaPlugin {
 	if ("create".equalsIgnoreCase(action)) {
 	    id = args.getString(0);
             resourceURL = args.getString(1);
+
+	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity(), vitamio_init_decoders)) {
+		Log.i(TAG, "HLSPlugin: execute: returning early?");
+		return;
+	    }
 
             Intent intent = new Intent(this.cordova.getActivity(), HLSPlayerService.class);
             this.cordova.getActivity().bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
