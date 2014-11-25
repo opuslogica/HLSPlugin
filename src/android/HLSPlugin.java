@@ -33,7 +33,7 @@ public class HLSPlugin extends CordovaPlugin {
 	    id = args.getString(0);
             resourceURL = args.getString(1);
 
-	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity(), "CHECKING THE LIBRARIES")) {
+	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity())) {
 		Log.i(TAG, "HLSPlugin: execute: returning early?");
 		return false;
 	    }
