@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
+import io.vov.vitamio.LibsChecker;
 
 public class HLSPlugin extends CordovaPlugin {
 
@@ -32,7 +33,7 @@ public class HLSPlugin extends CordovaPlugin {
 	    id = args.getString(0);
             resourceURL = args.getString(1);
 
-	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity(), vitamio_init_decoders)) {
+	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity(), "CHECKING THE LIBRARIES")) {
 		Log.i(TAG, "HLSPlugin: execute: returning early?");
 		return;
 	    }
