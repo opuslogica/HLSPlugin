@@ -35,7 +35,7 @@ public class HLSPlugin extends CordovaPlugin {
 
 	    if (!io.vov.vitamio.LibsChecker.checkVitamioLibs(this.cordova.getActivity())) {
 		Log.i(TAG, "HLSPlugin: execute: returning early?");
-		return false;
+		// return false;
 	    }
 
             Intent intent = new Intent(this.cordova.getActivity(), HLSPlayerService.class);
