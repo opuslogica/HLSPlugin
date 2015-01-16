@@ -14,41 +14,6 @@
     <clobbers target="window.HLSPlugin" />
   </js-module>
 
-  <!-- android -->
-  <platform name="android">
-    <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="HLSPlugin" >
-        <param name="android-package" value="org.opuslogica.plugins.HLSPlugin"/>
-      </feature>
-    </config-file>
-    <config-file target="AndroidManifest.xml" parent="/*">
-      <uses-permission android:name="android.permission.RECORD_AUDIO" />
-      <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-      <uses-permission android:name="android.permission.INTERNET" />
-      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-      <uses-permission android:name="android.permission.BLUETOOTH" />      
-      <uses-permission android:name="android.permission.BROADCAST_STICKY" />
-      <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    </config-file>
-        
-    <config-file target="AndroidManifest.xml" parent="/manifest/application">
-      <service android:name="org.opuslogica.plugins.HLSPlayerService" android:enabled="true" android:exported="false" />
-      <activity android:name="io.vov.vitamio.activity.InitActivity" android:windowSoftInputMode="stateAlwaysHidden"
-		android:theme="@android:style/Theme.NoTitleBar"
-		android:launchMode="singleTop"
-		android:configChanges="orientation|screenSize|smallestScreenSize|keyboard|keyboardHidden|navigation"/>
-    </config-file>
-
-    <config-file target="res/values/strings.xml" parent="/*">
-    </config-file>
-
-    <source-file src="src/android/HLSPlugin.java" target-dir="src/org/opuslogica/plugins" />
-    <source-file src="src/android/HLSPlayerService.java" target-dir="src/org/opuslogica/plugins" />
-    <hook type="after_prepare" src="scripts/copy-libs.sh" />
-
-  </platform>
-
   <!-- ios -->
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
